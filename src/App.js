@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import reactDom from "react-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    name: "",
+    surname: "",
+  };
+
+  render() {
+    const handleNameChange = (e) => {
+      this.setState({
+        name: e.target.value,
+      });
+    };
+
+    const handleSurnameChange = (e) => {
+      this.setState({
+        surname: e.target.value,
+      });
+    };
+
+    const handleSend = (e) => {
+      console.log("Brawo ! Prawidłowe Dane : ) ");
+      e.preventDefault();
+    };
+
+    return (
+      <div>
+        <h1>Login :</h1>
+        <br></br>
+        <form onSubmit={handleSend}>
+          <input onChange={handleNameChange}></input>
+          <input onChange={handleSurnameChange}></input>
+          <br></br>
+          <input type="submit"></input>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default App;
